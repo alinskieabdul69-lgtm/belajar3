@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alinskie | Web Developer Muda</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #3b82f6;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        main {
+            padding-top: 6rem;
+        }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-image {
+            flex: 1;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 1rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(37, 99, 235, 0.3);
+        }
+
+        .about-content {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .skills {
+            flex: 1;
+        }
+
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background-color: #e2e8f0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: var(--primary);
+            border-radius: 5px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .tech-item {
+            background-color: var(--light);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+
+        @media (max-width: 768px) {
+            .hero, .about-content {
+                flex-direction: column;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Alinskie</div>
+                <div class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">Tentang Saya</a>
+                    <a href="#projects">Proyek</a>
+                    <a href="#contact">Kontak</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content fade-in" style="animation-delay: 0.2s;">
+                    <h1>Halo, Saya Alinskie</h1>
+                    <p>Seorang web developer muda berbakat yang lahir pada 17 Maret 2010. Saya bersemangat dalam menciptakan website yang indah dan fungsional menggunakan HTML, CSS, dan JavaScript.</p>
+                    <a href="#projects" class="btn">Lihat Proyek Saya</a>
+                </div>
+                <div class="hero-image fade-in" style="animation-delay: 0.4s;">
+                    <img src="1000341335." alt="Foto Alinskie, seorang remaja laki-laki berkulit sawo matang sedang tersenyum sambil duduk di depan laptop, mengenakan kacamata dan hoodie merah">
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about" style="background-color: #f1f5f9;">
+            <div class="container">
+                <h2 class="fade-in">Tentang Saya</h2>
+                <div class="about-content fade-in" style="animation-delay: 0.2s;">
+                    <div class="about-text">
+                        <p>Saya adalah seorang pelajar SMK SANGKURIANG 1 CIMAHI yang memiliki ketertarikan besar dalam dunia pengembangan website. Sejak usia dini, saya sudah mulai mempelajari pemrograman dan membuat website sederhana.</p>
+                        <p>Di luar coding, saya menyukai matematika, sains, dan teknologi terbaru. Saya juga aktif dalam berbagai kegiatan ekstrakurikuler sekolah dan selalu bersemangat untuk mempelajari hal-hal baru.</p>
+                        <p>Saya percaya bahwa usia bukanlah penghalang untuk belajar dan berprestasi. Dengan ketekunan dan semangat belajar, saya terus mengembangkan kemampuan saya dalam web development.</p>
+                    </div>
+                    <div class="skills">
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>HTML</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>CSS</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>JavaScript</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>UI/UX Design</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 70%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2 class="fade-in">Proyek Saya</h2>
+                <div class="projects-grid">
+                    <div class="project-card fade-in" style="animation-delay: 0.2s;">
+                        <div class="project-image">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/da1bc212-356d-4eb6-98f0-cb7f6bf9f53b.png" alt="Website portfolio pribadi dengan desain modern dan warna biru, menampilkan berbagai proyek dan informasi kontak">
+                        </div>
+                        <div class="project-info">
+                            <h3>Portfolio Pribadi</h3>
+                            <p>Website portfolio saya yang pertama, dibuat dengan HTML, CSS, dan JavaScript murni.</p>
+                            <div class="tech-stack">
+                                <span class="tech-item">HTML</span>
+                                <span class="tech-item">CSS</span>
+                                <span class="tech-item">JavaScript</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="btn">Lihat Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card fade-in" style="animation-delay: 0.4s;">
+                        <div class="project-image">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/91a97a5c-e54a-432e-b6a7-65ca342190d7.png" alt="Aplikasi web kalkulator interaktif dengan tampilan modern dan fungsi-fungsi matematika dasar">
+                        </div>
+                        <div class="project-info">
+                            <h3>Kalkulator Interaktif</h3>
+                            <p>Kalkulator berbasis web dengan berbagai fungsi matematika dan animasi interaktif.</p>
+                            <div class="tech-stack">
+                                <span class="tech-item">HTML</span>
+                                <span class="tech-item">CSS</span>
+                                <span class="tech-item">JavaScript</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="btn">Lihat Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card fade-in" style="animation-delay: 0.6s;">
+                        <div class="project-image">
+                            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/927be209-1c8d-4c6a-94bd-4861d96b0678.png" alt="Game sederhana berbasis web dengan karakter kartun dan latar belakang berwarna-warni">
+                        </div>
+                        <div class="project-info">
+                            <h3>Game JavaScript</h3>
+                            <p>Game sederhana berbasis web yang dibuat menggunakan JavaScript Canvas API.</p>
+                            <div class="tech-stack">
+                                <span class="tech-item">HTML</span>
+                                <span class="tech-item">CSS</span>
+                                <span class="tech-item">JavaScript</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="btn">Lihat Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" style="background-color: #f1f5f9;">
+            <div class="container">
+                <h2 class="fade-in">Hubungi Saya</h2>
+                <form class="fade-in" style="animation-delay: 0.2s;">
+                    <div class="form-group">
+                        <label for="name">Nama</label>
+                        <input type="text" id="name" placeholder="Nama Anda">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="email@contoh.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Pesan</label>
+                        <textarea id="message" rows="5" placeholder="Pesan Anda"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Kirim Pesan</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.instagram.com/alunsss4?igsh=MWZhanN6dHBtaGFucw==" aria-label="Instagram">Instagram</a>
+                <a href="#" aria-label="GitHub">GitHub</a>
+                <a href="alinskiesopaan@gmail.com" aria-label="Email">Email</a>
+            </div>
+            <p>© 2025 Alinskie. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Terima kasih atas pesannya! Saya akan segera membalas melalui email.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
+
